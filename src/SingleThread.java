@@ -35,7 +35,6 @@ public class SingleThread implements Runnable {
             if (isPrime(i)) {
                 synchronized (this) {
                     primes[count++] = i;
-                    System.out.print(i + " ");
                 }
             }
         }

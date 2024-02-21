@@ -1,9 +1,13 @@
+/*
+    Implementing runnable is better than what we did in class because it
+    promotes modularity, which in turn is better object-oriented-programming.
+    It is cleaner, works faster, and is generally better practice.
+ */
 public class PrimeNumFinder {
-    public static final int limit = 100000;
+    public static final int limit = 1000000;
     public static final int numThreads = 5;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         // Single Thread
-        System.out.println("Single Thread Primes: ");
         long singleStart = System.currentTimeMillis();
         SingleThread singleThread = new SingleThread(limit);
         singleThread.run();
@@ -13,13 +17,17 @@ public class PrimeNumFinder {
         System.out.println("\nSingle thread time: " + singleTime + " mills");
 
         // MultiThreaded
-        System.out.println("Multi Thread Primes: ");
+        Thread threads[] = new Thread[numThreads];
         long multiStart = System.currentTimeMillis();
         for (int i = 0; i < numThreads; i++) {
             MultiThread multiThread = new MultiThread(limit, numThreads, i);
-            Thread thread = new Thread(multiThread);
-            thread.start();
+            threads[i] = new Thread(multiThread);
+            threads[i].start();
         }
+        for (Thread thread : threads) {
+            thread.join();
+        }
+
         long multiEnd = System.currentTimeMillis();
         long multiTime = multiEnd - multiStart;
 
