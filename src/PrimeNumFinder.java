@@ -17,7 +17,7 @@ public class PrimeNumFinder {
         System.out.println("\nSingle thread time: " + singleTime + " mills");
 
         // MultiThreaded
-        Thread threads[] = new Thread[numThreads];
+        Thread[] threads = new Thread[numThreads];
         long multiStart = System.currentTimeMillis();
         for (int i = 0; i < numThreads; i++) {
             MultiThread multiThread = new MultiThread(limit, numThreads, i);
