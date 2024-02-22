@@ -1,39 +1,30 @@
-import java.util.Arrays;
+import java.util.ArrayList;
 
 class MultiThread implements Runnable {
     private final int limit;
     private final int numThreads;
     private final int threadNumber;
-    private int[] primes;
-    private int count;
+    private ArrayList<Integer> primes;
+    private PrimeChecker primeChecker;
 
     MultiThread(int limit, int numThreads, int threadNum) {
         this.limit = limit;
         this.numThreads = numThreads;
-        this.primes = new int[limit / 2];
-        this.count = 0;
+        this.primes = new ArrayList<>();
         this.threadNumber = threadNum;
-    }
-
-    private boolean isPrime(int number) {
-        if (number <= 1)
-            return false;
-        for (int i = 2; i <= Math.sqrt(number); i++) {
-            if (number % i == 0)
-                return false;
-        }
-        return true;
+        this.primeChecker = new PrimeChecker();
     }
 
     @Override
     public void run() {
-        int start = 2 + threadNumber;
+        int start = 1 + threadNumber;
         int step = numThreads;
 
         for (int i = start; i <= limit; i+= step) {
-            if (isPrime(i)) {
+            if (primeChecker.isPrime(i)) {
                 synchronized (this) {
-                    primes[count++] = i;
+                    primes.add(i);
+                    System.out.print(i + " ");
                 }
             }
         }

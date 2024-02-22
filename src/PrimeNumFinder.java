@@ -2,9 +2,16 @@
     Implementing runnable is better than what we did in class because it
     promotes modularity, which in turn is better object-oriented-programming.
     It is cleaner, works faster, and is generally better practice.
+
+    CHANGE LOGS
+        - Changed the prime numbers to be stored in an array list (wow something from oop *shocked*)
+        - Changed name of zip to MultiThreadPrimeNum instead of MultiThreatPrimeNum
+        - Added class PrimeChecker
+        - Changed to start at 1 inside the classes instead of 2.
+        - Looked over the multithreading in class and does indeed work
  */
 public class PrimeNumFinder {
-    public static final int limit = 1000000;
+    public static final int limit = 10000;
     public static final int numThreads = 5;
     public static void main(String[] args) throws InterruptedException {
         // Single Thread
