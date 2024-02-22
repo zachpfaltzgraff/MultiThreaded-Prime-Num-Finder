@@ -6,7 +6,8 @@
     CHANGE LOGS
         - Changed the prime numbers to be stored in an array list (wow something from oop *shocked*)
         - Changed name of zip to MultiThreadPrimeNum instead of MultiThreatPrimeNum
-        - Added class PrimeChecker
+        - Added class PrimeChecker instead of having Prime Method in each Mutli and Single class
+        - Removed sleep in single thread
         - Changed to start at 1 inside the classes instead of 2.
         - Looked over the multithreading in class and does indeed work
  */
